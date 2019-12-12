@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  quartz:
+    scheduler-name: quartzScheduler
+    auto-startup: true
+    startup-delay: 5s
+    properties:
+      org:
+        quartz:
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 20
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
+          jobstore:
+            class: org.quartz.simpl.RAMJobStore
+            misfireThreshold: 3000
+
+logging:
+  config: classpath:conf/log4j2.xml
